@@ -41,6 +41,7 @@ export default class DropDownItem extends Backbone.View {
     });
     parent.$inner.html(this.$el.attr('text'));
     const value = this.isPlaceholder() ? '' : this.getValue();
+    this.$el.addClass('is-disabled');
     parent.$input.val(value).trigger('change');
     parent.trigger('change', parent);
     return this;
@@ -53,6 +54,7 @@ export default class DropDownItem extends Backbone.View {
     this.$el.removeAttr('selected');
     this.$el.attr('aria-selected', 'false');
     parent.$inner.html('');
+    this.$el.removeClass('is-disabled');
     parent.$input.val('').trigger('change');
     parent.trigger('change', parent);
     return this;
